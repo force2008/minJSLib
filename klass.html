@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width"/>
+<title>Untitled</title>
+<link rel="stylesheet" href="../css/app.css"/>
+<link rel="stylesheet" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/grid.css"/>
+<link rel="stylesheet" href="../css/module.css"/>
+<link rel="stylesheet" href="../css/template.css"/>
+</head>
+<body>
+<div class="g-doc">
+    <div class="g-hd">
+          
+    </div>
+    <div class="g-bd">
+        <div class="g-mn">
+          <div id="card" style="position:relative"></div><input type="button" value="card" id="show">
+
+          <div><input type="button" value="window" id="window"></div>
+          <div><div id="uitest"></div><input type="button" value="ui" id="ui"></div>
+
+          <div id="content"></div>
+
+          <div id="pager"></div>
+
+          <div id="content1" style="width:500px;height:100px;overflow:auto;;margin-top:20px"></div>
+          <div style="margin-top:20px;">tab demo</div>
+          <div id="box" style="color:red"><span>tab1</span> <span>tab2</span> <span>tab3</span></div>
+        </div>
+        <div class="g-sd">
+              
+        </div>
+    </div>
+    <div class="g-ft">
+          
+    </div>
+</div>
+
+<!-- @DEFINE -->
+<script src="node_modules/klass/klass.js"></script>
+<script>
+  var Person = klass(function(name){
+    this.name= name;
+  }).statics({
+    head:':)',
+    feet:'_|_'})
+  .methods({walk:function(){}});
+
+  var SuperHuman = Person.extend(function(){})
+                    .methods({
+                      walk:function(){
+                        this.supr();
+                        this.fly();
+                      },
+                      fly:function(){}
+                  });
+    new SuperHuman('zelda').walk();
+</script>
+    
+<script src="event.js"></script>
+</body>
+</html>

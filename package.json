@@ -1,0 +1,19 @@
+{
+  "name": "klass",
+  "version": "0.0.1",
+  "description": "js simple framework",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "gulp": "~3.8.5",
+    "klass": "~1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "klass"
+  },
+  "author": "",
+  "license": "BSD-2-Clause"
+}
