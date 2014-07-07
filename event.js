@@ -1,25 +1,35 @@
-var Event = klass(function() {
-    this.init();
-    this.reset();
-}).methods({
-    init: function() {
-        console.log('aaa');
-    },
-    batEvent: function() {
-        console.log('batevent');
-    },
-    reset: function() {
-        console.log('reset');
-    }
-}).statics({
-    pool: [],
-    allocate: function() {
-        var instance = this.pool.length && this.pool.shift();
-        if (!instance) {
-            instance = new this;
+define(['./element.js'], function(e) {
+    var addEvent = (function(elm, type, handler, isCap) {
+        addEvent = document.all ? function(elm, type, handler, isCap) {
+            elm = e.get(elm);
+            elm.attachEvent('on' + type, handler);
+        } :
+            function(elm, type, handler, isCap) {
+                elm = e.get(elm);
+                elm.addEventListener(type, handler, isCap || false);
         }
-        console.log('allocate');
-        instance.reset();
+        return addEvent
+    })();
+    var stop = function(event) {
+        event = event || window.event;
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+        if (event.preventDefault) {
+            event.preventDefault()
+        } else {
+            event.returnValue = false;
+        }
+    }
+    var get = function(event) {
+        event = event || window.event;
+        return event.srcElement || event.target;
+    };
+    return {
+        addEvent: addEvent,
+        get: get,
+        stop: stop
     }
 })
-Event.allocate();
